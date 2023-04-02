@@ -1,0 +1,60 @@
+//setup button A
+const int buttonAPin = 2;
+int buttonAState = 0;
+int lastButtonAState = 0;
+bool A = false;
+
+//setup button B
+const int buttonBPin = 3;
+int buttonBState = 0;
+int lastButtonBState = 0;
+bool B = false;
+
+//setup button C
+const int buttonBPin = 4;
+int buttonCState = 0;
+int lastButtonCState = 0;
+bool C = false;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(buttonAPin, INPUT);
+  pinMode(buttonBPin, INPUT);
+  pinMode(buttonCPin, INPUT);
+  Serial.begin(9600);
+  Serial.println("Star Part A")
+}
+
+void loop() {
+  buttonAState = digitalRead(buttonAPin);
+  buttonBState = digitalRead(buttonBPin);
+  buttonCState = digitalRead(buttonCPin);
+
+  //read button A
+  if (buttonAState ! = lastButtonAState) {
+    if (buttonAState == HIGH) {
+      A = true;
+    }
+  }
+
+  //read button B
+  if (buttonBState != lastButtonBState) {
+    if (buttonBState == HIGH) {
+      B = true;
+    }
+  }
+
+  if (buttonCState != lastButtonCState) {
+    if (buttonCState == HIGH) {
+      C = true;
+    }
+  }
+
+  if (A && B && C) {
+    Serial.println("The End!");
+  }
+
+  lastButtonAState = buttonAState;
+  lastButtonBState = buttonBState;
+  lastButtonCState = buttonCState;
+}
