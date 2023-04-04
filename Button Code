@@ -1,23 +1,22 @@
-//setup button A
+//setup Pumpkin-Carriage
 const int buttonAPin = 2;
 int buttonAState = 0;
 int lastButtonAState = 0;
 bool A = false;
 
-//setup button B
+//setup Mice-Horses
 const int buttonBPin = 3;
 int buttonBState = 0;
 int lastButtonBState = 0;
 bool B = false;
 
-//setup button C
+//setup Pink-Silver Dress
 const int buttonBPin = 4;
 int buttonCState = 0;
 int lastButtonCState = 0;
 bool C = false;
 
 void setup() {
-  // put your setup code here, to run once:
   pinMode(buttonAPin, INPUT);
   pinMode(buttonBPin, INPUT);
   pinMode(buttonCPin, INPUT);
@@ -26,7 +25,7 @@ void setup() {
 }
 
 void loop() {
-  buttonAState = digitalRead(buttonAPin);
+  buttonAState = digitalRead(buttonAPin); 
   buttonBState = digitalRead(buttonBPin);
   buttonCState = digitalRead(buttonCPin);
 
