@@ -1,59 +1,44 @@
-//setup Pumpkin-Carriage
-const int buttonAPin = 2;
-int buttonAState = 0;
-int lastButtonAState = 0;
-bool A = false;
+#include <Servo.h>
 
-//setup Mice-Horses
-const int buttonBPin = 3;
-int buttonBState = 0;
-int lastButtonBState = 0;
-bool B = false;
+Servo myservo1; //Pumpkin to Carriage (PC)
+Servo myservo2; //Mice to Horses (MH)
+Servo myservo3; //Pink to Silver Dress (PS)
 
-//setup Pink-Silver Dress
-const int buttonBPin = 4;
-int buttonCState = 0;
-int lastButtonCState = 0;
-bool C = false;
+const int buttonPin1 = 9; (PC Button)
+const int buttonPin2 = 11; (MH Button)
+const int buttonPin3 = 13; (PS Button)
 
 void setup() {
-  pinMode(buttonAPin, INPUT);
-  pinMode(buttonBPin, INPUT);
-  pinMode(buttonCPin, INPUT);
-  Serial.begin(9600);
-  Serial.println("Star Part A")
+  myservo1.attach(8); 
+  pinMode(buttonPin1, INPUT); //PC Servo
+
+  myservo2.attach(10);
+  pinMode(buttonPin2, INPUT); //MH Servo
+
+  myservo3.attach(12);
+  pinMode(buttonPin3, INPUT); //PS Servo
 }
 
 void loop() {
-  buttonAState = digitalRead(buttonAPin); 
-  buttonBState = digitalRead(buttonBPin);
-  buttonCState = digitalRead(buttonCPin);
 
-  //read button A
-  if (buttonAState ! = lastButtonAState) {
-    if (buttonAState == HIGH) {
-      A = true;
-    }
+//Pumpkin to Carriage Function
+  if (digitalRead(buttonPin1) == HIGH) {
+    myservo1.write(180);
+  } else {
+    myservo1.write(0);
+  }
+  
+//Mice to Horses Function
+  if (digitalRead(buttonPin2) == HIGH) {
+    myservo2.write(180);
+  } else {
+    myservo2.write(0);
   }
 
-  //read button B
-  if (buttonBState != lastButtonBState) {
-    if (buttonBState == HIGH) {
-      B = true;
-    }
+//Pink to Silver Dress Function
+    if (digitalRead(buttonPin3) == HIGH) {
+    myservo3.write(180);
+  } else {
+    myservo3.write(0);
   }
-
-  if (buttonCState != lastButtonCState) {
-    if (buttonCState == HIGH) {
-      C = true;
-    }
-  }
-
-  if (A && B && C) {
-    Serial.println("The End!");
-  }
-
-  lastButtonAState = buttonAState;
-  lastButtonBState = buttonBState;
-  lastButtonCState = buttonCState;
 }
