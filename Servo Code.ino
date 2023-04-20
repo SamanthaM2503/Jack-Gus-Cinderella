@@ -1,3 +1,8 @@
+/* Cinderella
+Team Members: Priscilla Osorio and Samantha Miranda
+Description: This program creates the transformations; the servos turn to reveal diferent looks
+*/
+
 #include <Servo.h>
 
 //Servos
